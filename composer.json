@@ -1,0 +1,27 @@
+{
+    "name": "havenshen/region-pull",
+    "description": "解析官方行政区划代码保存至数据库。",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "HavenShen",
+            "email": "havenshen@gmail.com"
+        }
+    ],
+    "require": {
+        "overtrue/pinyin": "~3.0"
+    },
+     "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "HavenShen\\Region\\Pull\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
