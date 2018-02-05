@@ -71,17 +71,6 @@ class RegionPullService
             throw new Exception('列表为空');
         }
 
-        // foreach ($list as $item) {
-        //     var_dump(!strncmp(429000, 420000, 2)
-        //                 && 429000 % 100 === 0
-        //                 && 429000 % 10000 !== 0);die;
-        //     var_dump(!strncmp(429000, 420000, 4));die;
-        //     if ($item['name'] == '神农架林区') {
-        //         var_dump($item['name']);die;
-        //     }
-        // }
-
-
         // 省份
          $province = array_filter($list, function($v) {
             return $v['code'] % 10000 === 0;
@@ -103,9 +92,9 @@ class RegionPullService
                 $citys[0]['sub'] = $area;
             } else {
                 $citys = array_filter($list, function($v) use($pro) {
-                    return !strncmp($v['code'], $pro['code'], 2)  || !strncmp($v['code'], $pro['code'], 3)
+                    return !strncmp($v['code'], $pro['code'], 2)
                         && $v['code'] % 100 === 0
-                        && $v['code'] % 1000 !== 0;
+                        && $v['code'] % 10000 !== 0;
                 });
 
                 foreach ($citys as &$city) {
