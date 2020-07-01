@@ -16,11 +16,13 @@ class RegionPullServiceTest extends \PHPUnit\Framework\TestCase
 
     public function setUp()
     {
-        $this->regionPull = new RegionPullService('http://www.mca.gov.cn/article/sj/tjbz/a/2017/201801/201801151447.html');
+        $this->regionPull = new RegionPullService('http://www.mca.gov.cn/article/sj/xzqh/2020/2020/202003301019.html');
     }
 
     public function test_resolve()
     {
+        // $str = '   延庆区';
+        // var_dump();die;
         file_put_contents("./data/region.sql", $this->regionPull->resolve());
         // print_r($this->regionPull->resolve());
     }

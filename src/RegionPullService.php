@@ -49,15 +49,21 @@ class RegionPullService
         for ($i=0; $i < count($arr[1]); $i++) {
             $result[] = array('code' => $arr[1][$i], 'name' => $this->stripTags($arr[2][$i]));
         }
+
         return $result;
     }
 
     private function stripTags($str)
     {
-        return trim(strtr($str, array(
+        return trim(str_replace("\xc2\xa0", '', strtr($str, array(
             "<span style='mso-spacerun:yes'>" => '',
             "</span>" => '',
-        )), '  ');
+        ))), '  ');
+    }
+
+    private function trimC2A0($str)
+    {
+        return trim();
     }
 
      /**
@@ -78,7 +84,6 @@ class RegionPullService
 
         // 城市 & 地区
          foreach ($province as &$pro) {
-
             if (in_array($pro['name'], $this->city)) {
                 $citys = array($pro);
                 $citys[0]['code'] += 100;
@@ -112,6 +117,7 @@ class RegionPullService
         }
 
         $province = $this->withAdditional($province);
+
         return $province;
     }
 
